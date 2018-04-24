@@ -2,7 +2,7 @@ package com.niit.MusicanoBackEnd.daoimpl;
 
 import java.util.List;
 
-import com.niit.MusicanoBackEnd.config.Supplier;
+import com.niit.MusicanoBackEnd.model.Supplier;
 import com.niit.MusicanoBackEnd.dao.SupplierDao;
 
 public class SupplierDaoImpl implements SupplierDao {

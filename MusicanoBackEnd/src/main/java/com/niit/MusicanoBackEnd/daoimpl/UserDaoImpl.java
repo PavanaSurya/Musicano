@@ -2,7 +2,7 @@ package com.niit.MusicanoBackEnd.daoimpl;
 
 import java.util.List;
 
-import com.niit.MusicanoBackEnd.config.User;
+import com.niit.MusicanoBackEnd.model.User;
 import com.niit.MusicanoBackEnd.dao.UserDao;
 
 public class UserDaoImpl implements UserDao {

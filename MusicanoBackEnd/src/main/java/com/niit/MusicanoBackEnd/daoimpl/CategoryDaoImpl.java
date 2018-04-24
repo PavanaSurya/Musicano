@@ -2,7 +2,7 @@ package com.niit.MusicanoBackEnd.daoimpl;
 
 import java.util.List;
 
-import com.niit.MusicanoBackEnd.config.Category;
+import com.niit.MusicanoBackEnd.model.Category;
 import com.niit.MusicanoBackEnd.dao.CategoryDao;
 
 public class CategoryDaoImpl implements CategoryDao {

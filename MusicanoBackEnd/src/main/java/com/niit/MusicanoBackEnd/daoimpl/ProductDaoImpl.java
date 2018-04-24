@@ -2,7 +2,7 @@ package com.niit.MusicanoBackEnd.daoimpl;
 
 import java.util.List;
 
-import com.niit.MusicanoBackEnd.config.Product;
+import com.niit.MusicanoBackEnd.model.Product;
 import com.niit.MusicanoBackEnd.dao.ProductDao;
 
 public class ProductDaoImpl implements ProductDao {
