@@ -2,33 +2,69 @@ package com.niit.MusicanoBackEnd.daoimpl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.niit.MusicanoBackEnd.model.Category;
 import com.niit.MusicanoBackEnd.dao.CategoryDao;
 
+@Repository
+@Transactional
+@EnableTransactionManagement
+
 public class CategoryDaoImpl implements CategoryDao {
+	@Autowired
+	SessionFactory sessionFactory;
+
+	public CategoryDaoImpl(SessionFactory sessionFactory) {
+		
+		this.sessionFactory=sessionFactory;
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public boolean saveorupdateCat(Category category) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		sessionFactory.getCurrentSession().saveOrUpdate(category);
+		return true;
+		
 	}
 
 	@Override
 	public boolean deleteCat(Category category) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		sessionFactory.getCurrentSession().delete(category);
+		return true;
 	}
 
 	@Override
 	public Category getCategory(String catId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String s="From Category where catId='"+catId+"'";
+		Query q=sessionFactory.getCurrentSession().createQuery(s);
+		List<Category> lcrt=(List<Category>)q.list();
+		if(lcrt==null||lcrt.isEmpty())
+		{
+			System.out.println("Category list not found");
+			return null;
+		}
+		else
+		{
+			System.out.println("Category list");
+			return lcrt.get(0);
+		}
 	}
 
 	@Override
 	public List<Category> list() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Category> Categories=(List<Category>)sessionFactory.getCurrentSession().createCriteria(Category.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+		return Categories;
 	}
 	
 
