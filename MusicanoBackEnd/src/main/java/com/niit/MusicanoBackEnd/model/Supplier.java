@@ -1,4 +1,4 @@
-package com.niit.MusicanoBackEnd.config;
+package com.niit.MusicanoBackEnd.model;
 
 public class Supplier {
 	
