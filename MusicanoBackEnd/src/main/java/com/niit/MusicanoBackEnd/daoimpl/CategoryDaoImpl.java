@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.niit.MusicanoBackEnd.model.Category;
 import com.niit.MusicanoBackEnd.dao.CategoryDao;
 
-@Repository
+@Repository("categoryDao")
 @Transactional
 @EnableTransactionManagement
 

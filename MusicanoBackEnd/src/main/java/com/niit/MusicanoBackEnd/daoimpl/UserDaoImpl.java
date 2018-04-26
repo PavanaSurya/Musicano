@@ -15,7 +15,7 @@ import com.niit.MusicanoBackEnd.model.User;
 import com.niit.MusicanoBackEnd.dao.UserDao;
 
 @Transactional
-@Repository
+@Repository("userDao")
 @EnableTransactionManagement
 public class UserDaoImpl implements UserDao {
 	

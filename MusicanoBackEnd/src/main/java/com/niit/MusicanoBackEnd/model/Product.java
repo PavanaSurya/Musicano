@@ -13,8 +13,8 @@ public class Product {
 	private String proId;
 	private String proName;
 	private String prodescrptn;
-	private String qty;
-	private String price;
+	private int qty;
+	private double price;
 	public String getProId() {
 		return proId;
 	}
@@ -33,16 +33,16 @@ public class Product {
 	public void setProdescrptn(String prodescrptn) {
 		this.prodescrptn = prodescrptn;
 	}
-	public String getQty() {
+	public int getQty() {
 		return qty;
 	}
-	public void setQty(String qty) {
+	public void setQty(int qty) {
 		this.qty = qty;
 	}
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
  

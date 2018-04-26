@@ -15,7 +15,7 @@ import com.niit.MusicanoBackEnd.model.Product;
 import com.niit.MusicanoBackEnd.dao.ProductDao;
 
 @Transactional
-@Repository
+@Repository("productDao")
 @EnableTransactionManagement
 public class ProductDaoImpl implements ProductDao {
 	@Autowired

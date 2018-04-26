@@ -15,7 +15,7 @@ import com.niit.MusicanoBackEnd.model.Supplier;
 import com.niit.MusicanoBackEnd.dao.SupplierDao;
 
 @Transactional
-@Repository
+@Repository("supplierDao")
 @EnableTransactionManagement
 public class SupplierDaoImpl implements SupplierDao {
 

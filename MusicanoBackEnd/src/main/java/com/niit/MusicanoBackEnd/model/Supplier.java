@@ -13,7 +13,7 @@ public class Supplier {
 	private String supId;
 	private String supName;
 	private String addr;
-	private String ph_no;
+	private long ph_no;
 	public String getSupId() {
 		return supId;
 	}
@@ -32,10 +32,10 @@ public class Supplier {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-	public String getPh_no() {
-		return ph_no;
+	public long  getPh_no() {
+		return ph_no; 
 	}
-	public void setPh_no(String ph_no) {
+	public void setPh_no(long ph_no) {
 		this.ph_no = ph_no;
 	}
 

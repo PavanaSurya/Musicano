@@ -13,7 +13,7 @@ public class User {
 	private String userId;
 	private String userName;
 	private String addr;
-	private String ph_no;
+	private long ph_no;
 	private String email_Id;
 	private String pwd;
 	public String getUserId() {
@@ -34,10 +34,10 @@ public class User {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-	public String getPh_no() {
+	public long getPh_no() {
 		return ph_no;
 	}
-	public void setPh_no(String ph_no) {
+	public void setPh_no(long ph_no) {
 		this.ph_no = ph_no;
 	}
 	public String getEmail_Id() {
