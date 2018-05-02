@@ -19,7 +19,7 @@ public class SupplierTest
 		sup.setSupId("S101");
 		sup.setSupName("Supplier1");
 		sup.setAddr("addr1");
-		sup.setPh_no(9765456322l);
+		sup.setPh_no("9393882637");
 		if(supDao.saveorupdateSup(sup)==true)
 		{
 			System.out.println("Supplier is added successfully");
@@ -31,7 +31,7 @@ public class SupplierTest
 		sup.setSupId("S102");
 		sup.setSupName("Supplier2");
 		sup.setAddr("addr1");
-		sup.setPh_no(8383883827l);
+		sup.setPh_no("9383993833");
 		if(supDao.saveorupdateSup(sup)==true)
 		{
 			System.out.println("Supplier is added successfully");
@@ -44,6 +44,15 @@ public class SupplierTest
 		if(supDao.deleteSup(sup)==true)
 		{
 			System.out.println("Supplier Deleted");
+		}
+		else
+		{
+			System.out.println("Supplier Not Deleted");
+		}
+		sup=supDao.getSupplier("S101");
+		if(sup==null)
+		{
+			System.out.println("Supplier is empty");
 		}
 		else
 		{

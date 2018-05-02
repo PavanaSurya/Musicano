@@ -15,12 +15,12 @@ public class CategoryTest
 		ctx.scan("com.niit.*");
 		ctx.refresh();
 		Category cat=(Category)ctx.getBean("category");
-		CategoryDao catDao=((CategoryDao)ctx.getBean("categoryDao"));
+		CategoryDao catDao=(CategoryDao)ctx.getBean("categoryDao");
 		cat.setCatId("C101");
 		cat.setCatName("Category1");
 		if(catDao.saveorupdateCat(cat)==true)
 		{
-			System.out.println("Category is add successfully");
+			System.out.println("Category is added successfully");
 		}
 		else
 		{

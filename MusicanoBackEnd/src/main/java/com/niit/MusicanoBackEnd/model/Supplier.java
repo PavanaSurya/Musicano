@@ -1,6 +1,10 @@
 package com.niit.MusicanoBackEnd.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -9,11 +13,20 @@ import org.springframework.stereotype.Component;
 @Table
 @Component
 public class Supplier {
-	
+	@Id
 	private String supId;
 	private String supName;
 	private String addr;
-	private long ph_no;
+	private String ph_no;
+	@OneToMany(mappedBy="supplier")
+	private List<Product> product;
+	
+	public List<Product> getProduct() {
+		return product;
+	}
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
 	public String getSupId() {
 		return supId;
 	}
@@ -32,10 +45,10 @@ public class Supplier {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-	public long  getPh_no() {
+	public String  getPh_no() {
 		return ph_no; 
 	}
-	public void setPh_no(long ph_no) {
+	public void setPh_no(String ph_no) {
 		this.ph_no = ph_no;
 	}
 

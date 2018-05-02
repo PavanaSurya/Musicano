@@ -1,6 +1,10 @@
 package com.niit.MusicanoBackEnd.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -9,12 +13,43 @@ import org.springframework.stereotype.Component;
 @Table
 @Component
 public class Product {
-	
+	@Id
 	private String proId;
 	private String proName;
 	private String prodescrptn;
 	private int qty;
 	private double price;
+	@ManyToOne
+	@JoinColumn(name="catId")
+	private Category category;
+	
+	@ManyToOne
+	@JoinColumn(name="supId")
+	private Supplier supplier;
+	
+	@OneToOne
+	@JoinColumn(name="cartItems_Id")
+	private CartItems cartItems;
+	
+	
+	public CartItems getCartItems() {
+		return cartItems;
+	}
+	public void setCartItems(CartItems cartItems) {
+		this.cartItems = cartItems;
+	}
+	public Supplier getSupplier() {
+		return supplier;
+	}
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 	public String getProId() {
 		return proId;
 	}

@@ -14,16 +14,37 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.MusicanoBackEnd.dao.AuthenticationDao;
+import com.niit.MusicanoBackEnd.dao.BillingDao;
+import com.niit.MusicanoBackEnd.dao.CartDao;
+import com.niit.MusicanoBackEnd.dao.CartItemsDao;
 import com.niit.MusicanoBackEnd.dao.CategoryDao;
+import com.niit.MusicanoBackEnd.dao.OrderDao;
+import com.niit.MusicanoBackEnd.dao.OrderItemsDao;
 import com.niit.MusicanoBackEnd.dao.ProductDao;
+import com.niit.MusicanoBackEnd.dao.ShippingDao;
 import com.niit.MusicanoBackEnd.dao.SupplierDao;
 import com.niit.MusicanoBackEnd.dao.UserDao;
+import com.niit.MusicanoBackEnd.daoimpl.AuthenticationDaoImpl;
+import com.niit.MusicanoBackEnd.daoimpl.BillingDaoImpl;
+import com.niit.MusicanoBackEnd.daoimpl.CartDaoImpl;
+import com.niit.MusicanoBackEnd.daoimpl.CartItemsDaoImpl;
 import com.niit.MusicanoBackEnd.daoimpl.CategoryDaoImpl;
+import com.niit.MusicanoBackEnd.daoimpl.OrderDaoImpl;
+import com.niit.MusicanoBackEnd.daoimpl.OrderItemsDaoImpl;
 import com.niit.MusicanoBackEnd.daoimpl.ProductDaoImpl;
+import com.niit.MusicanoBackEnd.daoimpl.ShippingDaoImpl;
 import com.niit.MusicanoBackEnd.daoimpl.SupplierDaoImpl;
 import com.niit.MusicanoBackEnd.daoimpl.UserDaoImpl;
+import com.niit.MusicanoBackEnd.model.Authentication;
+import com.niit.MusicanoBackEnd.model.Billing;
+import com.niit.MusicanoBackEnd.model.Cart;
+import com.niit.MusicanoBackEnd.model.CartItems;
 import com.niit.MusicanoBackEnd.model.Category;
+import com.niit.MusicanoBackEnd.model.Order;
+import com.niit.MusicanoBackEnd.model.OrderItems;
 import com.niit.MusicanoBackEnd.model.Product;
+import com.niit.MusicanoBackEnd.model.Shipping;
 import com.niit.MusicanoBackEnd.model.Supplier;
 import com.niit.MusicanoBackEnd.model.User;
 
@@ -60,6 +81,13 @@ public class ApplicationContext {
 		sessionBuilder.addAnnotatedClass(Product.class);
 		sessionBuilder.addAnnotatedClass(Supplier.class);
 		sessionBuilder.addAnnotatedClass(User.class);
+		sessionBuilder.addAnnotatedClass(Authentication.class);
+		sessionBuilder.addAnnotatedClass(Billing.class);
+		sessionBuilder.addAnnotatedClass(Cart.class);
+		sessionBuilder.addAnnotatedClass(CartItems.class);
+		sessionBuilder.addAnnotatedClass(Order.class);
+		sessionBuilder.addAnnotatedClass(OrderItems.class);
+		sessionBuilder.addAnnotatedClass(Shipping.class);
 
 		return sessionBuilder.buildSessionFactory();
 	}
@@ -93,6 +121,48 @@ public class ApplicationContext {
 	@Bean("userDao")
 	public UserDao getUserDao(SessionFactory sessionFactory) {
 		return new UserDaoImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean("authenticationDao")
+	public AuthenticationDao getAuthenticationDao(SessionFactory sessionFactory) {
+		return new AuthenticationDaoImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean("billingDao")
+	public BillingDao getBillingDao(SessionFactory sessionFactory) {
+		return new BillingDaoImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean("cartDao")
+	public CartDao getCartDao(SessionFactory sessionFactory) {
+		return new CartDaoImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean("cartitemsDao")
+	public CartItemsDao getCartItemsDao(SessionFactory sessionFactory) {
+		return new CartItemsDaoImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean("orderDao")
+	public OrderDao getOrderDao(SessionFactory sessionFactory) {
+		return new OrderDaoImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean("orderitemsDao")
+	public OrderItemsDao getOrderItemsDao(SessionFactory sessionFactory) {
+		return new OrderItemsDaoImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean("shippingDao")
+	public ShippingDao getShippingDao(SessionFactory sessionFactory) {
+		return new ShippingDaoImpl(sessionFactory);
 	}
 
 }
