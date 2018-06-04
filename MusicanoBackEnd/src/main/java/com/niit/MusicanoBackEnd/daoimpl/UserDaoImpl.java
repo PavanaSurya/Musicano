@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.niit.MusicanoBackEnd.model.Authentication;
 import com.niit.MusicanoBackEnd.model.Category;
 import com.niit.MusicanoBackEnd.model.User;
 import com.niit.MusicanoBackEnd.dao.UserDao;
@@ -30,7 +31,14 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public boolean saveorupdateUs(User user) {
-		
+		Authentication auth=new Authentication();
+		auth.setUserName(user.getEmail_Id());
+		user.getBilling().setUser(user);
+		user.getBilling().setPh_no(user.getPh_no());
+		user.getBilling().setAddr(user.getAddr());
+		sessionFactory.getCurrentSession().saveOrUpdate(user.getCart());
+		sessionFactory.getCurrentSession().saveOrUpdate(user.getBilling());
+		sessionFactory.getCurrentSession().saveOrUpdate(auth);
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
 		return true;
 	}
@@ -67,4 +75,37 @@ public class UserDaoImpl implements UserDao {
 		return Users;
 	}
 
-}
+	@Override
+	public User isValid(String umail, String pwd) {
+		String s="From User where email_Id='"+umail+"' and pwd='"+pwd+"'";
+		Query q=sessionFactory.getCurrentSession().createQuery(s);
+		List<User> lcrt=(List<User>)q.list();
+		if(lcrt==null||lcrt.isEmpty())
+		{
+			return null;
+		}
+		else
+		{
+			return lcrt.get(0);
+		}
+	}
+
+	@Override
+	public User getEmail(String currusername) {
+		String s="From User where email_Id='"+currusername+"'";
+		Query q=sessionFactory.getCurrentSession().createQuery(s);
+		List<User> lcrt=(List<User>)q.list();
+		if(lcrt==null||lcrt.isEmpty())
+		{
+			System.out.println("User List Not Found");
+			return null;
+		}
+		else
+		{
+			System.out.println("User List");
+			return lcrt.get(0);
+		}
+	}
+
+	}
+

@@ -4,10 +4,9 @@ import java.util.List;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.niit.MusicanoBackEnd.dao.OrderDao;
+
 import com.niit.MusicanoBackEnd.dao.ShippingDao;
 import com.niit.MusicanoBackEnd.dao.UserDao;
-import com.niit.MusicanoBackEnd.model.Order;
 import com.niit.MusicanoBackEnd.model.Shipping;
 import com.niit.MusicanoBackEnd.model.User;
 
@@ -20,8 +19,6 @@ public class ShippingTest
 		ctx.refresh();
 		Shipping shp=(Shipping)ctx.getBean("shipping");
 		ShippingDao shpDao=(ShippingDao)ctx.getBean("shippingDao");
-		Order ord=(Order)ctx.getBean("order");
-		OrderDao ordDao=(OrderDao)ctx.getBean("orderDao");
 		User us=(User)ctx.getBean("user");
 		UserDao userDao=(UserDao)ctx.getBean("userDao");
 		shp.setShipId("SP101");
@@ -29,8 +26,7 @@ public class ShippingTest
 		shp.setAddr("Saddr1");
 		shp.setPh_no("9383638983");
 		shp.setCountry("India");
-		ord=ordDao.getOrder("O101");
-		shp.setOrder(ord);
+	
 		us=userDao.getUser("U101");
 		shp.setUser(us);
 		if(shpDao.saveorupdateShip(shp)==true)
@@ -46,8 +42,7 @@ public class ShippingTest
 		shp.setAddr("Saddr2");
 		shp.setPh_no("8393728333");
 		shp.setCountry("China");
-		ord=ordDao.getOrder("O102");
-		shp.setOrder(ord);
+	
 		us=userDao.getUser("U102");
 		shp.setUser(us);
 		if(shpDao.saveorupdateShip(shp)==true)
@@ -80,7 +75,7 @@ public class ShippingTest
 			System.out.println(shp.getAddr());
 			System.out.println(shp.getPh_no());
 			System.out.println(shp.getCountry());
-			System.out.println(shp.getOrder().getOrderId());
+			
 			System.out.println(shp.getUser().getUserId());
 		}
 		List<Shipping> clist=shpDao.list();
@@ -91,7 +86,7 @@ public class ShippingTest
 			System.out.println(sp.getAddr());
 			System.out.println(sp.getPh_no());
 			System.out.println(sp.getCountry());
-			System.out.println(sp.getOrder().getOrderId());
+		
 			System.out.println(sp.getUser().getUserId());
 		}
 	}

@@ -1,5 +1,7 @@
 package com.niit.MusicanoBackEnd.model;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -26,7 +28,10 @@ public class CartItems
 	@JoinColumn(name="proId")
 	private Product product;
 	
-	
+	public CartItems()
+	{
+		this.cartItems_Id="CARTITM"+UUID.randomUUID().toString().substring(30).toUpperCase();
+	}
 	
 	public Product getProduct() {
 		return product;

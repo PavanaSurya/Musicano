@@ -1,6 +1,7 @@
 package com.niit.MusicanoBackEnd.model;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -22,27 +23,23 @@ public class User {
 	private String ph_no;
 	private String email_Id;
 	private String pwd;
+	private String role="ROLE_USER";
 	
+	public User()
+	{
+		this.userId="USER"+UUID.randomUUID().toString().substring(30).toUpperCase();
+	}
 	@OneToOne
 	@JoinColumn(name="billId")
 	private Billing billing;
 	@OneToOne
-	@JoinColumn(name="orderId")
-	private Order order;
-	@OneToMany(mappedBy="user")
-	private List<Shipping> shipping;
-
-	public List<Shipping> getShipping() {
-		return shipping;
+	@JoinColumn(name="cart_Id")
+	private Cart cart;
+	public Cart getCart() {
+		return cart;
 	}
-	public void setShipping(List<Shipping> shipping) {
-		this.shipping = shipping;
-	}
-	public Order getOrder() {
-		return order;
-	}
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 	public Billing getBilling() {
 		return billing;
@@ -85,6 +82,12 @@ public class User {
 	}
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }

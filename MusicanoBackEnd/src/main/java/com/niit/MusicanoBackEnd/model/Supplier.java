@@ -1,6 +1,7 @@
 package com.niit.MusicanoBackEnd.model;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,6 +22,10 @@ public class Supplier {
 	@OneToMany(mappedBy="supplier")
 	private List<Product> product;
 	
+	public Supplier()
+	{
+		this.supId="SUP"+UUID.randomUUID().toString().substring(30).toUpperCase();
+	}
 	public List<Product> getProduct() {
 		return product;
 	}

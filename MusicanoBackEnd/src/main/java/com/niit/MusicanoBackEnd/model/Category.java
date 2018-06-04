@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table
@@ -17,7 +19,26 @@ public class Category {
     @Id
 	private String catId;
 	private String catName;
+	private String imageName;
+	@Transient
+	private MultipartFile pimg;
 	
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
+	public MultipartFile getPimg() {
+		return pimg;
+	}
+
+	public void setPimg(MultipartFile pimg) {
+		this.pimg = pimg;
+	}
+
 	public Category()
 	{
 		this.catId="CAT"+UUID.randomUUID().toString().substring(30).toUpperCase();

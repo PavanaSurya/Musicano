@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.niit.MusicanoBackEnd.dao.CartItemsDao;
+
 import com.niit.MusicanoBackEnd.dao.CategoryDao;
 import com.niit.MusicanoBackEnd.dao.ProductDao;
 import com.niit.MusicanoBackEnd.dao.SupplierDao;
-import com.niit.MusicanoBackEnd.model.CartItems;
+
 import com.niit.MusicanoBackEnd.model.Category;
 import com.niit.MusicanoBackEnd.model.Product;
 import com.niit.MusicanoBackEnd.model.Supplier;
@@ -26,8 +26,7 @@ public class ProductTest
 		CategoryDao catDao=(CategoryDao)ctx.getBean("categoryDao");
 		Supplier sup=(Supplier)ctx.getBean("supplier");
 		SupplierDao supDao=(SupplierDao)ctx.getBean("supplierDao");
-		CartItems crti = (CartItems) ctx.getBean("cartItems");
-		CartItemsDao crtiDao = (CartItemsDao) ctx.getBean("cartItemsDao");
+		
 		
 		pro.setProId("P101");
 		pro.setProName("Product1");
@@ -35,8 +34,7 @@ public class ProductTest
 		pro.setQty(20);
 		pro.setPrice(18.98);
 		
-		crti=crtiDao.getCartItems("CI101");
-		pro.setCartItems(crti);
+	
 		cat=catDao.getCategory("C101");
 		pro.setCategory(cat);
 		sup=supDao.getSupplier("S101");
@@ -57,8 +55,7 @@ public class ProductTest
 		pro.setQty(10);
 		pro.setPrice(20.19);
 		
-		crti=crtiDao.getCartItems("CI102");
-		pro.setCartItems(crti);
+	
 		cat=catDao.getCategory("C102");
 		pro.setCategory(cat);
 		sup=supDao.getSupplier("S102");
@@ -97,7 +94,7 @@ public class ProductTest
 			System.out.println(pro.getPrice());
 			System.out.println(pro.getCategory().getCatId());
 			System.out.println(pro.getSupplier().getSupId());
-			System.out.println(pro.getCartItems().getCartItems_Id());
+		
 		}
 		List<Product> plist=proDao.list();
 		for(Product p:plist)
@@ -109,7 +106,7 @@ public class ProductTest
 			System.out.println(p.getPrice());
 			System.out.println(p.getCategory().getCatId());
 			System.out.println(p.getSupplier().getSupId());
-			System.out.println(p.getCartItems().getCartItems_Id());
+	
 		}
 	}
 

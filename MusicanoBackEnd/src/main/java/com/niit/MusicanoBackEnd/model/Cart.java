@@ -1,10 +1,15 @@
 package com.niit.MusicanoBackEnd.model;
 
 import java.util.List;
+import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -18,7 +23,20 @@ public class Cart
 	private String cart_Id;
 	private double grandtotal=0.0;
 	private int totalItems=0;
-	@OneToMany(mappedBy="cart")
+	public Cart()
+	{
+		this.cart_Id="CART"+UUID.randomUUID().toString().substring(30).toUpperCase();
+	}
+	@OneToOne
+	@JoinColumn(name="userId")
+	private User user;
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	@OneToMany(mappedBy="cart", fetch=FetchType.EAGER)
 	private List<CartItems> cartItems;
 	
 	

@@ -43,7 +43,7 @@ public BillingDaoImpl(SessionFactory sessionFactory)
 	@Override
 	public Billing getBilling(String billId) {
 
-		String b="From Billing where billId='"+billId+"'";
+		String b="From Billing where userId='"+billId+"'";
 		Query q=sessionFactory.getCurrentSession().createQuery(b);
 		List<Billing> lcrt=(List<Billing>)q.list();
 		if(lcrt==null||lcrt.isEmpty())

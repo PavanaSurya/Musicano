@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.MusicanoBackEnd.dao.BillingDao;
-import com.niit.MusicanoBackEnd.dao.OrderDao;
+import com.niit.MusicanoBackEnd.dao.CartDao;
 import com.niit.MusicanoBackEnd.dao.ShippingDao;
 import com.niit.MusicanoBackEnd.dao.UserDao;
 import com.niit.MusicanoBackEnd.model.Billing;
-import com.niit.MusicanoBackEnd.model.Order;
+import com.niit.MusicanoBackEnd.model.Cart;
 import com.niit.MusicanoBackEnd.model.Shipping;
 import com.niit.MusicanoBackEnd.model.User;
 
@@ -24,8 +24,8 @@ public class UserTest
 		UserDao userDao=(UserDao)ctx.getBean("userDao");
 		Billing bill=(Billing)ctx.getBean("billing");
 		BillingDao billDao=(BillingDao)ctx.getBean("billingDao");
-		Order ord=(Order)ctx.getBean("order");
-		OrderDao ordDao=(OrderDao)ctx.getBean("orderDao");
+		Cart crt=(Cart)ctx.getBean("cart");
+		CartDao crtDao=(CartDao)ctx.getBean("cartDao");
 		Shipping shp=(Shipping)ctx.getBean("shipping");
 		ShippingDao shpDao=(ShippingDao)ctx.getBean("shippingDao");
 		us.setUserId("U101");
@@ -37,8 +37,8 @@ public class UserTest
 		
 		bill=billDao.getBilling("B101");
 		us.setBilling(bill);
-		ord=ordDao.getOrder("O101");
-		us.setOrder(ord);
+	    crt=crtDao.getCart("C101");
+	    us.setCart(crt);
 		
 		if(userDao.saveorupdateUs(us)==true)
 		{
@@ -56,8 +56,8 @@ public class UserTest
 		us.setPwd("cba");
 		bill=billDao.getBilling("B102");
 		us.setBilling(bill);
-		ord=ordDao.getOrder("O102");
-		us.getOrder();
+	    crt=crtDao.getCart("C102");
+	    us.setCart(crt);
 		if(userDao.saveorupdateUs(us)==true)
 		{
 			System.out.println("User is added successfully");
@@ -89,7 +89,7 @@ public class UserTest
 			System.out.println(us.getPh_no());
 			System.out.println(us.getPwd());
 			System.out.println(us.getBilling().getBillId());
-			System.out.println(us.getOrder().getOrderId());
+		    System.out.println(us.getCart().getCart_Id());
 			
 			
 		}
@@ -103,7 +103,7 @@ public class UserTest
 			System.out.println(u.getEmail_Id());
 			System.out.println(u.getPwd());
 			System.out.println(u.getBilling().getBillId());
-			System.out.println(u.getOrder().getOrderId());
+			System.out.println(u.getCart().getCart_Id());
 		}
 	}
 

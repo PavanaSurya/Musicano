@@ -1,5 +1,7 @@
 package com.niit.MusicanoBackEnd.model;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -20,7 +22,10 @@ public class OrderItems
 	@JoinColumn(name="orderId")
 	private Order order;
 	
-	
+	public OrderItems()
+	{
+		this.orderItem_Id="ORDERITM"+UUID.randomUUID().toString().substring(30).toUpperCase();
+	}
 	public Order getOrder() {
 		return order;
 	}

@@ -1,5 +1,7 @@
 package com.niit.MusicanoBackEnd.model;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -20,19 +22,14 @@ public class Shipping
 	private String addr;
 	private String ph_no;
 	private String country;
+	public Shipping()
+	{
+		this.shipId="SHIP"+UUID.randomUUID().toString().substring(30).toUpperCase();
+	}
 	@ManyToOne
 	@JoinColumn(name="userId")
 	private User user;
-	@OneToOne
-	@JoinColumn(name="orderId")
-	private Order order;
-	
-	public Order getOrder() {
-		return order;
-	}
-	public void setOrder(Order order) {
-		this.order = order;
-	}
+
 	public User getUser() {
 		return user;
 	}

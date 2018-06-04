@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.MusicanoBackEnd.dao.BillingDao;
-import com.niit.MusicanoBackEnd.dao.OrderDao;
+
 import com.niit.MusicanoBackEnd.dao.UserDao;
 import com.niit.MusicanoBackEnd.model.Billing;
-import com.niit.MusicanoBackEnd.model.Order;
+
 import com.niit.MusicanoBackEnd.model.User;
 
 public class BillingTest 
@@ -22,8 +22,7 @@ public class BillingTest
 		BillingDao billDao=(BillingDao)ctx.getBean("billingDao");
 		User us=(User)ctx.getBean("user");
 		UserDao usDao=(UserDao)ctx.getBean("userDao");
-		Order ord=(Order)ctx.getBean("order");
-		OrderDao ordDao=(OrderDao)ctx.getBean("orderDao");
+		
 		bill.setBillId("B101");
 		bill.setBillName("BillName1");
 		bill.setAddr("addr1");
@@ -32,8 +31,7 @@ public class BillingTest
 		
 		us=usDao.getUser("U101");
 		bill.setUser(us);
-		ord=ordDao.getOrder("O101");
-		bill.setOrder(ord);
+		
 		billDao.saveorupdateBill(bill);
 		
 		if(billDao.saveorupdateBill(bill)==true)
@@ -52,8 +50,7 @@ public class BillingTest
 		
 		us=usDao.getUser("U102");
 		bill.setUser(us);
-		ord=ordDao.getOrder("O102");
-		bill.setOrder(ord);
+		
 		billDao.saveorupdateBill(bill);
 		
 		if(billDao.saveorupdateBill(bill)==true)
@@ -87,7 +84,7 @@ public class BillingTest
 			System.out.println(bill.getPh_no());
 			System.out.println(bill.getCountry());
 			System.out.println(bill.getUser().getUserId());
-			System.out.println(bill.getOrder().getOrderId());
+			
 			
 		}
 		List<Billing> clist=billDao.list();
@@ -99,7 +96,7 @@ public class BillingTest
 			System.out.println(b.getPh_no());
 			System.out.println(b.getCountry());
 			System.out.println(b.getUser().getUserId());
-			System.out.println(b.getOrder().getOrderId());
+			
 		}
 	}
 

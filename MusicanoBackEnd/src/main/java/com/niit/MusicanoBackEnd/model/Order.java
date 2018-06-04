@@ -1,7 +1,9 @@
 package com.niit.MusicanoBackEnd.model;
 
 import java.util.List;
+import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -21,15 +23,19 @@ public class Order
 	private String orderDate;
 	private String orderTime;
 	private double grandtotal;
-	@OneToOne
+	public Order()
+	{
+		this.orderId="ORDER"+UUID.randomUUID().toString().substring(30).toUpperCase();
+	}
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="billId")
 	private Billing billing;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="shipId")
 	private Shipping shipping;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="userId")
 	private User user;
 	

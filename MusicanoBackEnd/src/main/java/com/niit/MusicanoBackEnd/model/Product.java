@@ -1,13 +1,17 @@
 package com.niit.MusicanoBackEnd.model;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table
@@ -19,7 +23,10 @@ public class Product {
 	private String prodescrptn;
 	private int qty;
 	private double price;
-	@ManyToOne
+	private String imageName;
+	@Transient
+	private MultipartFile pimg;
+	@ManyToOne 
 	@JoinColumn(name="catId")
 	private Category category;
 	
@@ -27,17 +34,13 @@ public class Product {
 	@JoinColumn(name="supId")
 	private Supplier supplier;
 	
-	@OneToOne
-	@JoinColumn(name="cartItems_Id")
-	private CartItems cartItems;
+
 	
+	public Product()
+	{
+		this.proId="PROD"+UUID.randomUUID().toString().substring(30).toUpperCase();
+	}
 	
-	public CartItems getCartItems() {
-		return cartItems;
-	}
-	public void setCartItems(CartItems cartItems) {
-		this.cartItems = cartItems;
-	}
 	public Supplier getSupplier() {
 		return supplier;
 	}
@@ -79,6 +82,22 @@ public class Product {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
+	public MultipartFile getPimg() {
+		return pimg;
+	}
+
+	public void setPimg(MultipartFile pimg) {
+		this.pimg = pimg;
 	}
  
 }

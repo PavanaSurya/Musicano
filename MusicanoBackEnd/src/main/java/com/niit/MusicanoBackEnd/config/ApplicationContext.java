@@ -21,6 +21,7 @@ import com.niit.MusicanoBackEnd.dao.CartItemsDao;
 import com.niit.MusicanoBackEnd.dao.CategoryDao;
 import com.niit.MusicanoBackEnd.dao.OrderDao;
 import com.niit.MusicanoBackEnd.dao.OrderItemsDao;
+import com.niit.MusicanoBackEnd.dao.PayDao;
 import com.niit.MusicanoBackEnd.dao.ProductDao;
 import com.niit.MusicanoBackEnd.dao.ShippingDao;
 import com.niit.MusicanoBackEnd.dao.SupplierDao;
@@ -32,6 +33,7 @@ import com.niit.MusicanoBackEnd.daoimpl.CartItemsDaoImpl;
 import com.niit.MusicanoBackEnd.daoimpl.CategoryDaoImpl;
 import com.niit.MusicanoBackEnd.daoimpl.OrderDaoImpl;
 import com.niit.MusicanoBackEnd.daoimpl.OrderItemsDaoImpl;
+import com.niit.MusicanoBackEnd.daoimpl.PayDaoImpl;
 import com.niit.MusicanoBackEnd.daoimpl.ProductDaoImpl;
 import com.niit.MusicanoBackEnd.daoimpl.ShippingDaoImpl;
 import com.niit.MusicanoBackEnd.daoimpl.SupplierDaoImpl;
@@ -43,6 +45,7 @@ import com.niit.MusicanoBackEnd.model.CartItems;
 import com.niit.MusicanoBackEnd.model.Category;
 import com.niit.MusicanoBackEnd.model.Order;
 import com.niit.MusicanoBackEnd.model.OrderItems;
+import com.niit.MusicanoBackEnd.model.Pay;
 import com.niit.MusicanoBackEnd.model.Product;
 import com.niit.MusicanoBackEnd.model.Shipping;
 import com.niit.MusicanoBackEnd.model.Supplier;
@@ -57,7 +60,7 @@ public class ApplicationContext {
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUrl("jdbc:h2:tcp://localhost/~/test/Musicano");
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/test/Musicano2");
 		dataSource.setUsername("Pavana");
 		dataSource.setPassword("suju");
 		return dataSource;
@@ -88,7 +91,7 @@ public class ApplicationContext {
 		sessionBuilder.addAnnotatedClass(Order.class);
 		sessionBuilder.addAnnotatedClass(OrderItems.class);
 		sessionBuilder.addAnnotatedClass(Shipping.class);
-
+		sessionBuilder.addAnnotatedClass(Pay.class);
 		return sessionBuilder.buildSessionFactory();
 	}
 
@@ -142,7 +145,7 @@ public class ApplicationContext {
 	}
 	
 	@Autowired
-	@Bean("cartitemsDao")
+	@Bean("cartItemsDao")
 	public CartItemsDao getCartItemsDao(SessionFactory sessionFactory) {
 		return new CartItemsDaoImpl(sessionFactory);
 	}
@@ -154,7 +157,7 @@ public class ApplicationContext {
 	}
 	
 	@Autowired
-	@Bean("orderitemsDao")
+	@Bean("orderItemsDao")
 	public OrderItemsDao getOrderItemsDao(SessionFactory sessionFactory) {
 		return new OrderItemsDaoImpl(sessionFactory);
 	}
@@ -163,6 +166,12 @@ public class ApplicationContext {
 	@Bean("shippingDao")
 	public ShippingDao getShippingDao(SessionFactory sessionFactory) {
 		return new ShippingDaoImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean("payDao")
+	public PayDao getPayDao(SessionFactory sessionFactory) {
+		return new PayDaoImpl(sessionFactory);
 	}
 
 }

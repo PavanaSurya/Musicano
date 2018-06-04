@@ -65,4 +65,20 @@ public class CartItemsDaoImpl implements CartItemsDao {
 		return Cartitems;
 	}
 
-}
+	@Override
+	public List<CartItems> getlist(String cart_Id) {
+		String ci="From CartItems where cart_Id='"+cart_Id+"'";
+		Query q=sessionFactory.getCurrentSession().createQuery(ci);
+		List<CartItems> lcrt=(List<CartItems>)q.list();
+		if(lcrt==null||lcrt.isEmpty())
+		{
+			System.out.println("CartItems list not found");
+			return null;
+		}
+		else
+		{
+			System.out.println("CartItems list");
+			return lcrt;
+		}
+	}
+	}

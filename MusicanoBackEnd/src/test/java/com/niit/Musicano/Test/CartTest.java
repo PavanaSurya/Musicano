@@ -6,8 +6,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.niit.MusicanoBackEnd.dao.CartDao;
 import com.niit.MusicanoBackEnd.dao.CartItemsDao;
+import com.niit.MusicanoBackEnd.dao.UserDao;
 import com.niit.MusicanoBackEnd.model.Cart;
 import com.niit.MusicanoBackEnd.model.CartItems;
+import com.niit.MusicanoBackEnd.model.User;
 
 public class CartTest 
 {
@@ -18,11 +20,14 @@ public class CartTest
 		ctx.refresh();
 		Cart crt=(Cart)ctx.getBean("cart");
 		CartDao crtDao=(CartDao)ctx.getBean("cartDao");
-		//CartItems crti=(CartItems)ctx.getBean("cartItems");
-		//CartItemsDao crtiDao=(CartItemsDao)ctx.getBean("cartItemsDao");
+		User us=(User)ctx.getBean("user");
+		UserDao usDao=(UserDao)ctx.getBean("userDao");
 		crt.setCart_Id("C101");
 		crt.setGrandtotal(0.0);
 		crt.setTotalItems(0);
+		
+		us=usDao.getUser("U101");
+		crt.setUser(us);
 		
 		if(crtDao.saveorupdateCart(crt)==true)
 		{
@@ -35,6 +40,10 @@ public class CartTest
 		crt.setCart_Id("C102");
 		crt.setGrandtotal(0.1);
 		crt.setTotalItems(2);
+		
+		us=usDao.getUser("U102");
+		crt.setUser(us);
+				
 		if(crtDao.saveorupdateCart(crt)==true)
 		{
 			System.out.println("Cart is Added Successfully");
@@ -63,6 +72,7 @@ public class CartTest
 			System.out.println(crt.getCart_Id());
 			System.out.println(crt.getGrandtotal());
 			System.out.println(crt.getTotalItems());
+			System.out.println(crt.getUser().getUserId());
 		}
 		List<Cart> clist=crtDao.list();
 		for(Cart cr:clist)
@@ -70,6 +80,7 @@ public class CartTest
 			System.out.println(cr.getCart_Id());
 			System.out.println(cr.getGrandtotal());
 			System.out.println(cr.getTotalItems());
+			System.out.println(cr.getUser().getUserId());
 		}
 		
 	}

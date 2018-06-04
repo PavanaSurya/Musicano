@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.MusicanoBackEnd.model.Category;
+import com.niit.MusicanoBackEnd.model.Product;
 import com.niit.MusicanoBackEnd.dao.CategoryDao;
 
 @Repository("categoryDao")
@@ -67,5 +68,20 @@ public class CategoryDaoImpl implements CategoryDao {
 		return Categories;
 	}
 	
+	public List<Product> getProductByCategory(Category category)
+	{
+		String category1=category.getCatId();
+		String c1="from Product where catId='"+category1+"'";
+		Query q1=sessionFactory.getCurrentSession().createQuery(c1);
+		List<Product> list=(List<Product>) q1.list();
+		if(list==null||list.isEmpty())
+		{
+			return null;
+		}
+		else
+		{
+			return list;
+		}
+	}
 
 }
