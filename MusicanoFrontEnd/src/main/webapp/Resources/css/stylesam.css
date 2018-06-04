@@ -1,0 +1,42 @@
+body{
+	background-image:url("D:\\NIIT\\images\\Violon_noir_-_1920x1080.jpg");
+	background-repeat:no-repeat;
+	background-size:100% 700px;
+}
+.simple-form{
+	text-align:center;
+	margin: 100px 0px;
+}
+#Billing{
+	width:50%;
+	background-color:#051019;
+	opacity:0.8;
+	padding:50px 50px;
+}
+#button{
+	width:250px;
+	padding:10px;
+	border-radius:5px;
+}
+#ph{
+	outline:0px;
+	
+	padding:10px;
+	border-radius:5px;
+}
+#phone{
+	width:200px;
+	padding:10px;
+	border-radius:5px;
+	outline:0px;
+}
+#butt{
+	width:120px;
+	padding:10px;
+	border-radius:5px;
+	background-color:#0c6996;
+	border:2px solid #01010c;
+	color:aliceblue;
+	font-size:12px;
+}
+	

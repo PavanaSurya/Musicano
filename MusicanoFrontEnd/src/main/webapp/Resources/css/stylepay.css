@@ -1,0 +1,37 @@
+
+h2 {
+    	color: white;
+	font-family:Segoe Print;
+	font-size:40px;
+	font-style:bold;
+}
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 40px;
+}
+.simple-form{
+	text-align:center;
+	margin: 100px 0px;
+}
+#Payment{
+	width:50%;
+	background-color:#051019;
+	opacity:0.8;
+	padding:50px 50px;
+}
+#button{
+	width:250px;
+	padding:10px;
+	border-radius:5px;
+}
+#butt{
+	width:120px;
+	padding:10px;
+	border-radius:5px;
+	background-color:#0c6996;
+	border:2px solid #01010c;
+	color:aliceblue;
+	font-size:12px;
+}
+	

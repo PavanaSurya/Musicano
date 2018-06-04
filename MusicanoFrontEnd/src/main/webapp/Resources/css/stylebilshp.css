@@ -1,0 +1,63 @@
+
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+  margin-top:0;
+}
+
+h3{
+	font-size:30PX;
+	font-family:Segoe Print;
+	color:white;
+}
+.container {
+  background-color: #f2f2f2;
+  padding: 10px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+.simple-form{
+	text-align:center;
+	margin: 100px 0px;
+}
+#Billship{
+	width:50%;
+	background-color:#051019;
+	opacity:0.8;
+	padding:50px 100px;
+}
+#button{
+	width:250px;
+	padding:10px;
+	border-radius:5px;
+}
+#ph{
+	outline:0px;
+	
+	padding:10px;
+	border-radius:5px;
+}
+#phone{
+	width:200px;
+	padding:10px;
+	border-radius:5px;
+	outline:0px;
+}
+#butt{
+	width:100%;
+	padding:12px;
+	border-radius:5px;
+	background-color:#0c6996;
+	border:2px solid #01010c;
+	color:aliceblue;
+	font-size:12px;
+}
+	
